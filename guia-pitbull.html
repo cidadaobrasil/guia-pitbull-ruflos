@@ -264,6 +264,12 @@
     cursor: pointer;
     white-space: nowrap;
   }
+  .quick-chip.highlight {
+    background: var(--amber);
+    color: white;
+    border-color: var(--amber);
+    box-shadow: 0 4px 12px rgba(230, 126, 34, 0.24);
+  }
   .toc-card {
     background: var(--white);
     border: 1.5px solid var(--border);
@@ -1555,14 +1561,14 @@ function buildNavigation() {
     { label: 'Cronogramas', target: 'chapter-semanal' },
     { label: 'Linguagem', target: 'chapter-linguagem' },
     { label: 'Passeio', target: 'chapter-passeio' },
-    { label: 'Visitas', target: 'chapter-visitas' },
+    { label: '🏠 Guia de Visitas', target: 'chapter-visitas', highlight: true },
     { label: 'Emergência', target: 'chapter-emergencia' },
     { label: 'Saúde', target: 'chapter-saude' },
     { label: 'Mitos', target: 'chapter-mitos' },
     { label: 'Fontes', target: 'chapter-referencias' }
   ];
   document.getElementById('quick-nav').innerHTML = quickItems.map(item =>
-    `<button class="quick-chip" onclick="jumpTo('${item.target}')">${item.label}</button>`
+    `<button class="quick-chip ${item.highlight ? 'highlight' : ''}" onclick="jumpTo('${item.target}', ${item.target.startsWith('chapter')})">${item.label}</button>`
   ).join('');
   document.getElementById('toc-grid').innerHTML = chapters.map((chapter, index) =>
     `<button class="toc-link" onclick="jumpTo('chapter-${chapter.id}', true)"><span>${chapter.icon}</span><span>${index + 1}. ${chapter.title}</span></button>`
