@@ -850,27 +850,26 @@
     }
   }
 
-  .hero-btn-visitas {
-    background: var(--amber);
-    border: none;
-    border-radius: 20px;
-    padding: 8px 18px;
-    font-size: 13px;
-    font-weight: 900;
-    color: white;
-    margin: 12px auto 0;
+  .badge-btn {
     cursor: pointer;
-    box-shadow: 0 4px 14px rgba(230, 126, 34, 0.4);
-    transition: transform 0.2s, background-color 0.2s;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    text-shadow: none;
-    position: relative;
-    z-index: 10;
+    font-family: inherit;
+    transition: background 0.2s, transform 0.2s;
+    outline: none;
   }
-  .hero-btn-visitas:active {
+  .badge-btn:hover {
+    background: rgba(255, 255, 255, 0.22);
+  }
+  .badge-btn:active {
     transform: scale(0.96);
+  }
+  .badge-highlight {
+    background: var(--amber) !important;
+    border-color: var(--amber) !important;
+    box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+  }
+  .badge-highlight:hover {
+    background: #f39c12 !important;
+    border-color: #f39c12 !important;
   }
 </style>
 </head>
@@ -880,11 +879,11 @@
   <h1>RUFLOS <span>PIT BULL</span></h1>
   <p class="hero-sub">Manual de criação responsável do Ruflos, agora com 4 meses: reforço positivo, rotina previsível, segurança real e vínculo forte com Joás e Laiza.</p>
   <div class="hero-badges" aria-label="Princípios do guia">
-    <span class="badge">Reforço positivo</span>
-    <span class="badge">Sem punição física</span>
-    <span class="badge">Checklist do Ruflos</span>
+    <button class="badge badge-btn" onclick="jumpTo('card-1')">Reforço positivo</button>
+    <button class="badge badge-btn" onclick="jumpTo('chapter-mitos', true)">Sem punição física</button>
+    <button class="badge badge-btn" onclick="jumpToChecklist()">Checklist do Ruflos</button>
+    <button class="badge badge-btn badge-highlight" onclick="jumpTo('chapter-visitas', true)">🏠 Guia de Visitas</button>
   </div>
-  <button class="hero-btn-visitas" onclick="jumpTo('chapter-visitas', true)">🏠 Guia de Visitas</button>
 </header>
 
 <div class="progress-bar-wrap" aria-label="Progresso das oito fases">
@@ -1614,6 +1613,15 @@ function jumpTo(targetId, open = false) {
   if (open && target.classList.contains('chapter-card')) target.classList.add('open');
   if (target.classList.contains('phase-card')) target.classList.add('open');
   target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function jumpToChecklist() {
+  const diaBtn = document.querySelector('.nav-tab[data-tab="dia"]');
+  if (diaBtn) switchTab('dia', diaBtn);
+  const target = document.querySelector('.daily-section');
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
 
 function togglePhase(i) {
