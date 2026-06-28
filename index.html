@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia Pit Bull do Ruflos — Joás e Laiza</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Bebas+Neue&display=swap');
+
+  :root {
+    --red: #C0392B;
+    --amber: #E67E22;
+    --green: #27AE60;
+    --blue: #2980B9;
+    --cream: #FDF8F0;
+    --tan: #F0E6D3;
+    --coal: #2C2C2C;
+    --mid: #555;
+    --border: #DDD0BB;
+    --white: #FFFFFF;
+    --soft-red: #FDECEA;
+    --soft-amber: #FEF6E7;
+    --soft-blue: #EAF3FC;
+    --soft-green: #EAF7EF;
+    --shadow: 0 4px 16px rgba(0,0,0,0.10);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--cream);
+    color: var(--coal);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  button, input { font: inherit; }
+  button { min-height: 44px; }
+  a { color: var(--blue); font-weight: 900; }
+
+  .hero {
+    background: var(--coal);
+    color: white;
+    padding: 32px 20px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 0%, rgba(192,57,43,0.35) 0%, transparent 65%),
+                radial-gradient(ellipse at 10% 100%, rgba(230,126,34,0.22) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .paw-hero {
+    font-size: 52px;
+    line-height: 1;
+    margin-bottom: 8px;
+    display: block;
+    position: relative;
+    animation: pulse 2.8s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(38px, 10vw, 66px);
+    letter-spacing: 2px;
+    line-height: 1;
+    color: white;
+    position: relative;
+  }
+  .hero h1 span { color: var(--amber); }
+  .hero-sub {
+    margin-top: 10px;
+    font-size: 15px;
+    color: rgba(255,255,255,0.76);
+    max-width: 420px;
+    margin-inline: auto;
+    position: relative;
+  }
+  .hero-badges {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 18px;
+    position: relative;
+  }
+  .badge {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 20px;
+    padding: 5px 13px;
+    font-size: 12px;
+    font-weight: 900;
+    color: white;
+  }
+
+  .progress-bar-wrap {
+    background: rgba(240,230,211,0.95);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 20px 10px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(6px);
+  }
+  .progress-label {
+    font-size: 12px;
+    font-weight: 900;
+    color: var(--mid);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+  }
+  .progress-label span:first-child { color: var(--red); }
+  .progress-track {
+    height: 8px;
+    background: var(--border);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--red), var(--amber));
+    border-radius: 99px;
+    transition: width 0.5s ease;
+    width: 0%;
+  }
+  .paw-track { display: flex; justify-content: space-between; margin-top: 5px; }
+  .paw-dot { font-size: 16px; opacity: 0.3; transition: opacity 0.4s; }
+  .paw-dot.done { opacity: 1; }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 16px 80px;
+  }
+  .tab-shell {
+    display: flex;
+    gap: 8px;
+    margin: 18px 0 12px;
+    background: var(--tan);
+    border-radius: 12px;
+    padding: 4px;
+  }
+  .nav-tab {
+    flex: 1;
+    padding: 9px;
+    border-radius: 9px;
+    border: none;
+    background: transparent;
+    font-size: 13px;
+    font-weight: 900;
+    cursor: pointer;
+    color: var(--mid);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .nav-tab.active {
+    background: white;
+    color: var(--coal);
+    box-shadow: var(--shadow);
+  }
+  .tab-section { display: none; }
+  .tab-section.active { display: block; }
+
+  .toolbar {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    gap: 8px;
+    align-items: center;
+    margin: 16px 0 12px;
+  }
+  .search-input {
+    min-height: 44px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0 12px;
+    background: white;
+    color: var(--coal);
+    outline: none;
+  }
+  .search-input:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(192,57,43,0.12); }
+  .icon-btn {
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: white;
+    color: var(--coal);
+    font-size: 18px;
+    font-weight: 900;
+    cursor: pointer;
+    min-width: 44px;
+    padding: 0 12px;
+  }
+  .small-help { color: var(--mid); font-size: 12px; margin: -4px 0 12px; }
+  .search-state {
+    min-height: 20px;
+    color: var(--mid);
+    font-size: 12px;
+    font-weight: 800;
+    margin: -6px 0 10px;
+  }
+  .quick-nav {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+    padding: 2px 0 10px;
+    margin-bottom: 6px;
+  }
+  .quick-nav::-webkit-scrollbar { display: none; }
+  .quick-chip {
+    flex: 0 0 auto;
+    border: 1.5px solid var(--border);
+    background: white;
+    color: var(--coal);
+    border-radius: 999px;
+    min-height: 40px;
+    padding: 0 13px;
+    font-size: 12px;
+    font-weight: 900;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .toc-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 14px;
+    margin: 12px 0 18px;
+  }
+  .toc-title {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--red);
+    font-size: 28px;
+    line-height: 1;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .toc-link {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #FAFAFA;
+    min-height: 48px;
+    padding: 8px 10px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 900;
+    color: var(--coal);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .toc-link span:first-child { font-size: 17px; flex: 0 0 auto; }
+
+  .alert-box {
+    background: #FEF9E7;
+    border-left: 4px solid var(--amber);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin: 20px 0 12px;
+    font-size: 14px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .alert-box .icon { font-size: 22px; flex-shrink: 0; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin: 28px 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .phase-card, .chapter-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 12px;
+    overflow: hidden;
+    border: 1.5px solid var(--border);
+    transition: border-color 0.3s;
+  }
+  .phase-card.open, .chapter-card.open { border-color: var(--red); }
+  .phase-header, .chapter-header {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    gap: 13px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    min-height: 64px;
+  }
+  .phase-icon, .chapter-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+    color: white;
+    font-weight: 900;
+  }
+  .phase-info, .chapter-info { flex: 1; min-width: 0; }
+  .phase-num, .chapter-num {
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.58;
+  }
+  .phase-title, .chapter-title {
+    font-size: 15px;
+    font-weight: 900;
+    line-height: 1.25;
+  }
+  .phase-check, .fav-btn {
+    width: 34px;
+    height: 34px;
+    min-height: 34px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: white;
+    color: var(--mid);
+    cursor: pointer;
+  }
+  .phase-card.done .phase-check {
+    background: var(--green);
+    border-color: var(--green);
+    color: white;
+  }
+  .fav-btn.active {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: white;
+  }
+  .chevron {
+    font-size: 18px;
+    color: var(--mid);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  .phase-card.open .chevron, .chapter-card.open .chevron { transform: rotate(180deg); }
+  .phase-body, .chapter-body {
+    display: none;
+    padding: 0 16px 18px;
+    border-top: 1px solid var(--border);
+    animation: slideIn 0.2s ease;
+  }
+  .phase-card.open .phase-body, .chapter-card.open .chapter-body { display: block; }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .phase-age {
+    background: var(--tan);
+    color: var(--red);
+    font-weight: 900;
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    display: inline-block;
+    margin: 14px 0 12px;
+  }
+  .tip-list { list-style: none; display: grid; gap: 8px; margin: 10px 0; }
+  .tip-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    background: #FAFAFA;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border-left: 3px solid var(--border);
+    font-size: 14px;
+  }
+  .bullet {
+    min-width: 26px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: white;
+    font-weight: 900;
+  }
+  .bul-red { background: var(--red); }
+  .bul-amber { background: var(--amber); }
+  .bul-green { background: var(--green); }
+  .bul-blue { background: var(--blue); }
+  .cmd-grid, .mini-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 10px;
+    margin: 12px 0;
+  }
+  .cmd-card, .mini-card {
+    background: #FAFAFA;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px;
+    min-height: 96px;
+  }
+  .cmd-name, .mini-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 1px;
+    color: var(--red);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .cmd-desc, .mini-copy { font-size: 13px; color: var(--mid); }
+  .focinheira-steps, .step-list { counter-reset: step; display: grid; gap: 8px; margin: 10px 0; }
+  .fstep, .step {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 12px 10px 42px;
+    position: relative;
+    font-size: 14px;
+  }
+  .fstep::before, .step::before {
+    counter-increment: step;
+    content: counter(step);
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--red);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 900;
+  }
+  .golden {
+    background: linear-gradient(135deg, #2C2C2C, #171717);
+    color: white;
+    border-radius: var(--radius);
+    padding: 18px;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+  .golden-label {
+    color: var(--amber);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  .golden-wrong { color: #F6B1AA; font-weight: 900; margin-bottom: 10px; }
+  .golden-right { color: #BEE8CD; font-weight: 900; font-size: 17px; }
+  .golden-arrow { display: block; color: var(--amber); font-size: 24px; margin: 6px 0; }
+  .pro-note {
+    background: #EAF3FC;
+    border: 1.5px solid rgba(41,128,185,0.35);
+    border-radius: var(--radius);
+    padding: 14px;
+    display: flex;
+    gap: 12px;
+    font-size: 14px;
+  }
+  .pro-icon { font-size: 26px; }
+  .mark-done-btn, .daily-reset {
+    width: 100%;
+    border: 2px solid var(--border);
+    background: white;
+    border-radius: 12px;
+    padding: 12px;
+    margin-top: 14px;
+    font-weight: 900;
+    color: var(--mid);
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .mark-done-btn.done {
+    background: var(--green);
+    border-color: var(--green);
+    color: white;
+  }
+
+  .timeline {
+    display: grid;
+    gap: 10px;
+    margin: 12px 0;
+  }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 94px 1fr;
+    gap: 12px;
+    align-items: stretch;
+  }
+  .timeline-time {
+    background: var(--coal);
+    color: white;
+    border-radius: 12px;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .timeline-copy {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--amber);
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+  .body-svg-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0,1fr));
+    gap: 8px;
+    margin: 12px 0;
+  }
+  .body-state {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 8px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 900;
+  }
+  .body-state svg { width: 100%; height: 72px; display: block; }
+  .flow {
+    display: grid;
+    gap: 8px;
+    margin: 12px 0;
+  }
+  .flow-step {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    gap: 10px;
+    align-items: start;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 10px;
+  }
+  .risk-high { border-left: 5px solid var(--red); }
+  .risk-mid { border-left: 5px solid var(--amber); }
+  .risk-low { border-left: 5px solid var(--green); }
+  .source {
+    margin-top: 12px;
+    padding: 10px 12px;
+    background: #FAFAFA;
+    border: 1px dashed var(--border);
+    border-radius: 10px;
+    color: var(--mid);
+    font-size: 12px;
+    overflow-wrap: anywhere;
+  }
+  .source strong { color: var(--coal); }
+  .ref-list {
+    display: grid;
+    gap: 8px;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+  }
+  .ref-list a { overflow-wrap: anywhere; }
+  .daily-section {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: var(--shadow);
+    margin-top: 18px;
+  }
+  .daily-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 34px;
+    color: var(--red);
+    letter-spacing: 1px;
+    line-height: 1;
+  }
+  .daily-sub { color: var(--mid); font-size: 13px; margin-bottom: 12px; }
+  .daily-list { display: grid; gap: 8px; }
+  .daily-item {
+    display: grid;
+    grid-template-columns: 30px 30px 1fr;
+    gap: 10px;
+    align-items: center;
+    background: #FAFAFA;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 10px;
+    cursor: pointer;
+    min-height: 52px;
+  }
+  .daily-item.checked { background: var(--soft-green); border-color: rgba(39,174,96,0.35); }
+  .daily-cb {
+    width: 28px;
+    height: 28px;
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+  }
+  .daily-item.checked .daily-cb { background: var(--green); color: white; border-color: var(--green); }
+  .daily-emoji { font-size: 20px; }
+  .daily-text { font-size: 14px; font-weight: 800; }
+  .daily-progress {
+    display: grid;
+    grid-template-columns: 1fr 42px;
+    gap: 10px;
+    align-items: center;
+    margin-top: 14px;
+  }
+  .daily-prog-track {
+    height: 10px;
+    background: var(--border);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .daily-prog-fill {
+    height: 100%;
+    background: var(--green);
+    border-radius: 99px;
+  }
+  .daily-prog-label { font-weight: 900; color: var(--green); text-align: right; }
+  .danger-list, .sinais-grid { display: grid; gap: 8px; }
+  .danger-item, .sinal-item, .child-rule {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    background: var(--soft-red);
+    border-left: 4px solid var(--red);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-weight: 800;
+  }
+  .sinal-item { background: white; border-left-color: var(--amber); }
+  .child-rule { background: #FAFAFA; border-left-color: var(--blue); }
+  .hidden-by-search { display: none !important; }
+  .empty-search {
+    display: none;
+    background: white;
+    border: 1.5px dashed var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    color: var(--mid);
+    font-weight: 800;
+    text-align: center;
+    margin: 12px 0;
+  }
+  .empty-search.show { display: block; }
+  .back-top {
+    position: fixed;
+    right: 14px;
+    bottom: 14px;
+    z-index: 120;
+    width: 48px;
+    height: 48px;
+    min-height: 48px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.45);
+    background: var(--coal);
+    color: white;
+    box-shadow: 0 8px 26px rgba(0,0,0,0.22);
+    font-size: 20px;
+    font-weight: 900;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .back-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .c-red { background: var(--red); }
+  .c-amber { background: var(--amber); }
+  .c-green { background: var(--green); }
+  .c-blue { background: var(--blue); }
+  .c-purple { background: #8E44AD; }
+  .c-teal { background: #16A085; }
+  .c-coal { background: var(--coal); }
+  .c-pink { background: #C2185B; }
+
+  @media (max-width: 560px) {
+    .container { padding-inline: 12px; }
+    .toolbar { grid-template-columns: 1fr 44px 44px 44px; }
+    .icon-btn { padding: 0; }
+    .toc-grid { grid-template-columns: 1fr; }
+    .cmd-grid, .mini-grid { grid-template-columns: 1fr; }
+    .body-svg-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .timeline-item { grid-template-columns: 78px 1fr; }
+    .hero h1 { letter-spacing: 1px; }
+  }
+  @media (max-width: 380px) {
+    .hero { padding-inline: 14px; }
+    .progress-label { font-size: 11px; letter-spacing: 0.5px; }
+    .phase-header, .chapter-header { padding: 14px 12px; gap: 9px; }
+    .phase-title, .chapter-title { font-size: 14px; }
+    .phase-icon, .chapter-icon { width: 40px; height: 40px; }
+    .fav-btn { width: 32px; height: 32px; min-height: 32px; }
+    .timeline-item { grid-template-columns: 1fr; }
+    .timeline-time { min-height: 38px; }
+    .body-svg-grid { grid-template-columns: 1fr; }
+  }
+  @media print {
+    body { background: white; color: black; }
+    .hero, .progress-bar-wrap, .tab-shell, .toolbar, .quick-nav, .toc-card, .back-top, .mark-done-btn, .daily-reset, .fav-btn, .chevron { display: none !important; }
+    .container { max-width: none; padding: 0; }
+    .tab-section, .phase-body, .chapter-body { display: block !important; }
+    .phase-card, .chapter-card, .daily-section { break-inside: avoid; box-shadow: none; border: 1px solid #aaa; }
+    a { color: black; text-decoration: underline; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <span class="paw-hero" aria-hidden="true">🐾</span>
+  <h1>RUFLOS <span>PIT BULL</span></h1>
+  <p class="hero-sub">Manual de criação responsável do Ruflos pelo Joás e pela Laiza: reforço positivo, rotina previsível, segurança real e vínculo forte.</p>
+  <div class="hero-badges" aria-label="Princípios do guia">
+    <span class="badge">Reforço positivo</span>
+    <span class="badge">Sem punição física</span>
+    <span class="badge">Checklist do Ruflos</span>
+  </div>
+</header>
+
+<div class="progress-bar-wrap" aria-label="Progresso das oito fases">
+  <div class="progress-label">
+    <span>Progresso do Ruflos nas 8 fases</span>
+    <span id="prog-count">0 / 8</span>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="prog-fill"></div></div>
+  <div class="paw-track" id="paw-track"></div>
+</div>
+
+<main class="container">
+  <div class="tab-shell" role="tablist" aria-label="Navegação principal">
+    <button class="nav-tab active" data-tab="guia" onclick="switchTab('guia',this)" role="tab" aria-selected="true">Guia</button>
+    <button class="nav-tab" data-tab="dia" onclick="switchTab('dia',this)" role="tab" aria-selected="false">Hoje</button>
+    <button class="nav-tab" data-tab="alerta" onclick="switchTab('alerta',this)" role="tab" aria-selected="false">Alertas</button>
+  </div>
+
+  <div class="toolbar">
+    <input class="search-input" id="search" type="search" placeholder="Buscar no guia do Ruflos..." oninput="applySearch()" aria-label="Buscar no guia">
+    <button class="icon-btn" onclick="clearSearch()" title="Limpar busca" aria-label="Limpar busca">×</button>
+    <button class="icon-btn" onclick="showFavoritesOnly()" title="Mostrar favoritos" aria-label="Mostrar favoritos">★</button>
+    <button class="icon-btn" onclick="window.print()" title="Imprimir ou salvar PDF" aria-label="Imprimir ou salvar PDF">⎙</button>
+  </div>
+  <p class="small-help" id="search-help">Use a busca para encontrar passeio, mordida, comida, emergência, adolescência ou fontes.</p>
+  <p class="search-state" id="search-state"></p>
+  <nav class="quick-nav" id="quick-nav" aria-label="Atalhos do guia"></nav>
+
+  <div id="tab-guia" class="tab-section active">
+    <div class="alert-box">
+      <span class="icon" aria-hidden="true">💡</span>
+      <div><strong>Objetivo real do Joás e da Laiza:</strong> Ruflos não precisa “ser durão”. Ruflos precisa aprender autocontrole, previsibilidade, confiança em Joás e Laiza e manejo seguro. Força física do Pit Bull exige rotina mais séria, não dureza.</div>
+    </div>
+
+    <div class="section-label">As 8 fases do Ruflos</div>
+
+    <article class="phase-card search-item" id="card-0">
+      <div class="phase-header" onclick="togglePhase(0)">
+        <div class="phase-icon c-red">1</div>
+        <div class="phase-info"><div class="phase-num">Fase 1</div><div class="phase-title">Socialização forte e controlada do Ruflos</div></div>
+        <div class="phase-check" id="check-0">✓</div><span class="chevron">⌄</span>
+      </div>
+      <div class="phase-body">
+        <div class="phase-age">2 a 4 meses: janela mais sensível</div>
+        <p>A fase mais importante da vida do Ruflos. Joás e Laiza devem apresentar novidades de forma segura, gradual e feliz, porque experiências positivas cedo reduzem medo futuro. A AVSAB descreve a socialização inicial como prioridade essencial antes que Ruflos chegue ao fim da janela primária.</p>
+        <div class="section-label" style="font-size:10px;margin:14px 0 8px;">Todo dia, algo novo para Ruflos</div>
+        <ul class="tip-list">
+          <li class="tip-item"><span class="bullet bul-red">P</span><span><strong>Pessoas variadas:</strong> homem, mulher, criança, idoso, boné, capacete, guarda-chuva, uniforme e passos diferentes.</span></li>
+          <li class="tip-item"><span class="bullet bul-red">S</span><span><strong>Sons e movimentos:</strong> bicicleta, moto, carro, caminhão, campainha, portão, sacola, carrinho e fogos distantes em volume baixo.</span></li>
+          <li class="tip-item"><span class="bullet bul-red">A</span><span><strong>Animais conhecidos e vacinados:</strong> encontros curtos com outros cães calmos, sempre com supervisão de Joás ou Laiza.</span></li>
+          <li class="tip-item"><span class="bullet bul-red">V</span><span><strong>Rotina veterinária:</strong> toque nas patas, escovação, guia, peitoral, coleira e focinheira tipo cesto com petisco.</span></li>
+        </ul>
+        <div class="alert-box"><span class="icon">🎯</span><div><strong>Fórmula de Joás e Laiza:</strong> Ruflos viu algo novo + Ruflos permaneceu abaixo do limite de reação = petisco imediato. Se Ruflos latiu, puxou ou travou, a distância estava curta demais; o casal afasta Ruflos e recomeça.</div></div>
+        <div class="source"><strong>Fontes:</strong> AVSAB Puppy Socialization Position Statement; AAHA Canine Life Stage Guidelines.</div>
+        <button class="mark-done-btn" id="done-0" onclick="markDone(0)">Joás e Laiza já dominam esta fase</button>
+      </div>
+    </article>
+
+    <article class="phase-card search-item" id="card-1">
+      <div class="phase-header" onclick="togglePhase(1)">
+        <div class="phase-icon c-amber">2</div>
+        <div class="phase-info"><div class="phase-num">Fase 2</div><div class="phase-title">Comandos obrigatórios: o freio de mão do Ruflos</div></div>
+        <div class="phase-check" id="check-1">✓</div><span class="chevron">⌄</span>
+      </div>
+      <div class="phase-body">
+        <div class="phase-age">2 a 6 meses: sessões curtas</div>
+        <p>Joás e Laiza treinam Ruflos em sessões de 5 a 10 minutos, 2 a 4 vezes ao dia. O treino é sempre baseado em reforço positivo: petisco, elogio, brincadeira e oportunidade de continuar. Punição física, tranco, susto e intimidação aumentam medo e risco de agressão, segundo a AVSAB.</p>
+        <div class="cmd-grid">
+          <div class="cmd-card"><div class="cmd-name">Senta</div><div class="cmd-desc">Joás ou Laiza leva o petisco acima do focinho do Ruflos. Quando Ruflos senta, o casal nomeia e recompensa.</div></div>
+          <div class="cmd-card"><div class="cmd-name">Fica</div><div class="cmd-desc">Laiza dá um passo para trás, volta rápido e recompensa. Joás aumenta distância e duração aos poucos.</div></div>
+          <div class="cmd-card"><div class="cmd-name">Vem</div><div class="cmd-desc">Chamar Ruflos sempre precisa prever coisa boa. Joás e Laiza nunca chamam Ruflos para bronca.</div></div>
+          <div class="cmd-card"><div class="cmd-name">Solta</div><div class="cmd-desc">O casal troca o objeto por petisco melhor. Arrancar da boca do Ruflos aumenta proteção de recurso.</div></div>
+          <div class="cmd-card"><div class="cmd-name">Deixa</div><div class="cmd-desc">Joás bloqueia acesso com a guia. Quando Ruflos olha para Joás ou Laiza, Ruflos recebe recompensa.</div></div>
+          <div class="cmd-card"><div class="cmd-name">Junto</div><div class="cmd-desc">Se Ruflos puxou, o casal para. Guia afrouxou, Joás e Laiza andam. Ruflos aprende que guia frouxa abre caminho.</div></div>
+        </div>
+        <div class="source"><strong>Fontes:</strong> AVSAB Humane Dog Training Position Statement; Karen Pryor, reforço positivo e marcação de comportamento.</div>
+        <button class="mark-done-btn" id="done-1" onclick="markDone(1)">Joás e Laiza já dominam esta fase</button>
+      </div>
+    </article>
+
+    <article class="phase-card search-item" id="card-2">
+      <div class="phase-header" onclick="togglePhase(2)">
+        <div class="phase-icon c-green">3</div>
+        <div class="phase-info"><div class="phase-num">Fase 3</div><div class="phase-title">Ruflos não avança em pessoas: treino do olhar</div></div>
+        <div class="phase-check" id="check-2">✓</div><span class="chevron">⌄</span>
+      </div>
+      <div class="phase-body">
+        <div class="phase-age">A vida toda: hábito permanente</div>
+        <div class="alert-box"><span class="icon">🧠</span><div>Existe uma distância em que Ruflos ainda consegue pensar. Essa é a distância segura de treino. Joás e Laiza trabalham antes da explosão, nunca esperando Ruflos perder controle para “corrigir”.</div></div>
+        <ul class="tip-list">
+          <li class="tip-item"><span class="bullet bul-green">1</span><span>Joás ou Laiza coloca guia e fica longe do estímulo: pessoa, bicicleta, moto ou outro animal.</span></li>
+          <li class="tip-item"><span class="bullet bul-green">2</span><span>Quando Ruflos olha o estímulo sem reagir, Joás ou Laiza marca com “isso” e recompensa.</span></li>
+          <li class="tip-item"><span class="bullet bul-green">3</span><span>Se Ruflos puxou, latiu ou endureceu, o casal afasta Ruflos e recomeça com mais distância.</span></li>
+          <li class="tip-item"><span class="bullet bul-green">4</span><span>Quando Ruflos olha para Joás ou Laiza depois de ver o estímulo, a recompensa vem rápido.</span></li>
+        </ul>
+        <div class="golden"><div class="golden-label">Fórmula do treino</div><div class="golden-right">Ruflos viu pessoa → Ruflos olhou para Joás ou Laiza → Ruflos foi recompensado → Ruflos seguiu calmo.</div></div>
+        <div class="source"><strong>Fontes:</strong> AVSAB Humane Dog Training; Jean Donaldson sobre limiar, dessensibilização e contracondicionamento.</div>
+        <button class="mark-done-btn" id="done-2" onclick="markDone(2)">Joás e Laiza já dominam esta fase</button>
+      </div>
+    </article>
+
+    <article class="phase-card search-item" id="card-3">
+      <div class="phase-header" onclick="togglePhase(3)">
+        <div class="phase-icon c-blue">4</div>
+        <div class="phase-info"><div class="phase-num">Fase 4</div><div class="phase-title">Controle de mordida do Ruflos desde cedo</div></div>
+        <div class="phase-check" id="check-3">✓</div><span class="chevron">⌄</span>
+      </div>
+      <div class="phase-body">
+        <div class="phase-age">2 a 5 meses: não deixar virar padrão</div>
+        <div class="alert-box" style="background:var(--soft-blue);border-color:var(--blue);"><span class="icon">🚫</span><div><strong>Joás e Laiza não brincam com as mãos.</strong> Mão, roupa e pé não são brinquedo do Ruflos. Ruflos precisa descarregar mordida em item correto.</div></div>
+        <div class="section-label" style="font-size:10px;margin:0 0 8px;">Quando Ruflos morder mão, roupa ou pé</div>
+        <div class="focinheira-steps">
+          <div class="fstep">Joás ou Laiza pausa a brincadeira na hora, sem gritar e sem sacudir a mão.</div>
+          <div class="fstep">O casal fica imóvel por 5 segundos e reduz a excitação.</div>
+          <div class="fstep">Joás ou Laiza oferece mordedor resistente, corda grossa ou brinquedo recheável.</div>
+          <div class="fstep">Quando Ruflos escolhe o item correto, Ruflos recebe elogio e a brincadeira continua.</div>
+        </div>
+        <ul class="tip-list">
+          <li class="tip-item"><span class="bullet bul-blue">🦴</span><span>Mordedor resistente de borracha, compatível com mordida forte.</span></li>
+          <li class="tip-item"><span class="bullet bul-blue">●</span><span>Bola resistente de tamanho seguro; espuma frágil fica fora da rotina do Ruflos.</span></li>
+          <li class="tip-item"><span class="bullet bul-blue">🧶</span><span>Corda grossa com regras: começa com convite, pausa com “solta”, termina antes de Ruflos passar do ponto.</span></li>
+          <li class="tip-item"><span class="bullet bul-blue">🧩</span><span>Brinquedo recheável para mastigação calma e descanso mental.</span></li>
+        </ul>
+        <div class="source"><strong>Fontes:</strong> Sophia Yin sobre manejo sem força; AVSAB Humane Dog Training.</div>
+        <button class="mark-done-btn" id="done-3" onclick="markDone(3)">Joás e Laiza já dominam esta fase</button>
+      </div>
+    </article>
+
+    <article class="phase-card search-item" id="card-4">
+      <div class="phase-header" onclick="togglePhase(4)">
+        <div class="phase-icon c-purple">5</div>
+        <div class="phase-info"><div class="phase-num">Fase 5</div><div class="phase-title">Rotina de energia física e mental do Ruflos</div></div>
+        <div class="phase-check" id="check-4">✓</div><span class="chevron">⌄</span>
+      </div>
+      <div class="phase-body">
+        <div class="phase-age">Diário: consistência vence intensidade</div>
+        <div class="alert-box" style="background:#F4ECF9;border-color:#8E44AD;"><span class="icon">⚡</span><div>Ruflos sem rotina fica mais impulsivo. Exercício físico ajuda, mas Ruflos também precisa de farejar, mastigar, resolver pequenos problemas e dormir bem.</div></div>
+        <div class="timeline">
+          <div class="timeline-item"><div class="timeline-time">Manhã</div><div class="timeline-copy"><strong>30 a 40 min:</strong> passeio com guia, cheiros permitidos e pausas de atenção em Joás ou Laiza.</div></div>
+          <div class="timeline-item"><div class="timeline-time">Tarde</div><div class="timeline-copy"><strong>5 a 10 min:</strong> obediência simples, “solta”, “deixa”, chamada e calma antes de recurso.</div></div>
+          <div class="timeline-item"><div class="timeline-time">Noite</div><div class="timeline-copy"><strong>20 a 30 min:</strong> passeio leve ou brincadeira com regra, finalizando antes de Ruflos ficar excitado demais.</div></div>
+          <div class="timeline-item"><div class="timeline-time">Dia todo</div><div class="timeline-copy">Mastigação segura, descanso em local tranquilo e água disponível.</div></div>
+        </div>
+        <div class="source"><strong>Fontes:</strong> AAHA Canine Life Stage Guidelines; literatura de enriquecimento ambiental aplicada a bem-estar.</div>
+        <button class="mark-done-btn" id="done-4" onclick="markDone(4)">Joás e Laiza já dominam esta fase</button>
+      </div>
+    </article>
+
+    <article class="phase-card search-item" id="card-5">
+      <div class="phase-header" onclick="togglePhase(5)">
+        <div class="phase-icon c-teal">6</div>
+        <div class="phase-info"><div class="phase-num">Fase 6</div><div class="phase-title">Regras dentro de casa para Ruflos</div></div>
+        <div class="phase-check" id="check-5">✓</div><span class="chevron">⌄</span>
+      </div>
+      <div class="phase-body">
+        <div class="phase-age">Desde o primeiro dia em casa</div>
+        <p>Ruflos aprende melhor quando Joás e Laiza repetem as mesmas regras. Carinho, porta aberta, comida, sofá e brincadeira viram consequências boas para calma e cooperação.</p>
+        <ul class="tip-list">
+          <li class="tip-item"><span class="bullet bul-green">✓</span><span>Ruflos cumprimenta visitas com quatro patas no chão ou sentado.</span></li>
+          <li class="tip-item"><span class="bullet bul-green">✓</span><span>Ruflos espera Joás ou Laiza liberar passagem no portão.</span></li>
+          <li class="tip-item"><span class="bullet bul-green">✓</span><span>Ruflos come depois de sentar e aguardar a liberação.</span></li>
+          <li class="tip-item"><span class="bullet bul-green">✓</span><span>Ruflos troca objeto por recompensa, sem disputa de força.</span></li>
+          <li class="tip-item"><span class="bullet bul-green">✓</span><span>Ruflos recebe visita com guia ou barreira até a calma estar estável.</span></li>
+        </ul>
+        <div class="section-label" style="font-size:10px;margin:16px 0 8px;">Quando chega visita</div>
+        <div class="focinheira-steps">
+          <div class="fstep">Joás coloca Ruflos na guia antes de abrir a porta.</div>
+          <div class="fstep">Laiza pede “senta”. A visita só se aproxima se Ruflos estiver calmo.</div>
+          <div class="fstep">Se Ruflos pula ou puxa, o casal afasta Ruflos sem bronca.</div>
+          <div class="fstep">Quando Ruflos acalma, Joás e Laiza permitem nova aproximação.</div>
+        </div>
+        <div class="source"><strong>Fontes:</strong> AVSAB Humane Dog Training; Patricia McConnell sobre manejo de saudação e previsibilidade.</div>
+        <button class="mark-done-btn" id="done-5" onclick="markDone(5)">Joás e Laiza já dominam esta fase</button>
+      </div>
+    </article>
+
+    <article class="phase-card search-item" id="card-6">
+      <div class="phase-header" onclick="togglePhase(6)">
+        <div class="phase-icon c-coal">7</div>
+        <div class="phase-info"><div class="phase-num">Fase 7</div><div class="phase-title">Focinheira tipo cesto: segurança com carinho</div></div>
+        <div class="phase-check" id="check-6">✓</div><span class="chevron">⌄</span>
+      </div>
+      <div class="phase-body">
+        <div class="phase-age">Introdução progressiva, sem pressa</div>
+        <div class="alert-box" style="background:#EAEAEA;border-color:#888;"><span class="icon">✅</span><div>Focinheira tipo cesto não é castigo. Para Ruflos, ela deve prever petisco, passeio seguro e tranquilidade. Joás e Laiza nunca usam focinheira como susto.</div></div>
+        <div class="focinheira-steps">
+          <div class="fstep">Joás mostra a focinheira. Ruflos olha para a focinheira e recebe petisco.</div>
+          <div class="fstep">Laiza coloca petisco dentro. Ruflos encosta o focinho por escolha própria.</div>
+          <div class="fstep">O casal prende por 1 segundo, solta e recompensa.</div>
+          <div class="fstep">Joás e Laiza aumentam segundos, depois minutos, sempre abaixo do desconforto.</div>
+          <div class="fstep">Ruflos usa em passeio apenas quando a associação positiva já está consolidada.</div>
+        </div>
+        <div class="alert-box" style="background:var(--soft-amber);border-color:var(--amber);"><span class="icon">⚠️</span><div>Joás e Laiza escolhem modelo tipo cesto, que permite arfar, beber água e receber petiscos. Modelo que fecha a boca não serve para uso prolongado.</div></div>
+        <div class="source"><strong>Fontes:</strong> AVSAB Humane Dog Training; recomendações veterinárias sobre manejo seguro e dessensibilização.</div>
+        <button class="mark-done-btn" id="done-6" onclick="markDone(6)">Joás e Laiza já dominam esta fase</button>
+      </div>
+    </article>
+
+    <article class="phase-card search-item" id="card-7">
+      <div class="phase-header" onclick="togglePhase(7)">
+        <div class="phase-icon c-pink">8</div>
+        <div class="phase-info"><div class="phase-num">Fase 8</div><div class="phase-title">Crianças e Ruflos: regra absoluta</div></div>
+        <div class="phase-check" id="check-7">✓</div><span class="chevron">⌄</span>
+      </div>
+      <div class="phase-body">
+        <div class="phase-age">Regra permanente</div>
+        <div class="danger-item" style="margin-bottom:14px;font-size:15px;"><span>🚨</span><span>Criança nunca fica sozinha com Ruflos, mesmo quando Ruflos estiver dócil, cansado ou habituado à casa.</span></div>
+        <div class="section-label" style="font-size:10px;margin:0 0 8px;">Joás e Laiza ensinam a criança a nunca</div>
+        <div class="child-rule"><span>🚫</span><span>Puxar orelha, cauda, pele ou coleira do Ruflos.</span></div>
+        <div class="child-rule"><span>🚫</span><span>Abraçar apertado, montar ou prender Ruflos.</span></div>
+        <div class="child-rule"><span>🚫</span><span>Mexer em Ruflos enquanto Ruflos come, dorme ou mastiga osso.</span></div>
+        <div class="child-rule"><span>🚫</span><span>Tirar brinquedo da boca do Ruflos.</span></div>
+        <div class="child-rule"><span>🚫</span><span>Colocar rosto perto do focinho do Ruflos.</span></div>
+        <div class="child-rule"><span>🚫</span><span>Acordar Ruflos de surpresa.</span></div>
+        <ul class="tip-list">
+          <li class="tip-item"><span class="bullet bul-amber">!</span><span>Se Ruflos tenta sair, Joás e Laiza permitem que Ruflos saia. Bloquear fuga aumenta risco.</span></li>
+          <li class="tip-item"><span class="bullet bul-amber">!</span><span>Rosnado é aviso. Joás e Laiza interrompem a situação e não punem o aviso.</span></li>
+        </ul>
+        <div class="source"><strong>Fontes:</strong> AVMA Dog Bite Prevention; AVSAB Humane Dog Training.</div>
+        <button class="mark-done-btn" id="done-7" onclick="markDone(7)">Joás e Laiza já dominam esta fase</button>
+      </div>
+    </article>
+
+    <div class="golden" style="margin-top:28px;">
+      <div class="golden-label">Frase de ouro do Ruflos</div>
+      <div class="golden-wrong">Ruflos não pode aprender:<br>“quando vejo alguém, avanço”.</div>
+      <span class="golden-arrow">↓</span>
+      <div class="golden-right">Ruflos precisa aprender:<br>“quando vejo alguém, procuro Joás ou Laiza e sou recompensado”.</div>
+    </div>
+
+    <div class="pro-note" style="margin-top:16px;margin-bottom:28px;">
+      <span class="pro-icon">🎓</span>
+      <div class="pro-text"><strong>Recomendação profissional:</strong> pelo porte do Ruflos, Joás e Laiza devem considerar aulas com profissional que use reforço positivo e tenha experiência em comportamento. O casal evita “adestramento de guarda”, treino por medo, tranco e intimidação.</div>
+    </div>
+
+    <div class="section-label">Capítulos completos</div>
+    <section class="toc-card" aria-label="Sumário dos capítulos">
+      <div class="toc-title">Sumário rápido</div>
+      <div class="toc-grid" id="toc-grid"></div>
+    </section>
+    <div class="empty-search" id="empty-search">Nenhum trecho encontrado. Joás e Laiza podem tentar termos como passeio, recurso, mordida, emergência ou adolescência.</div>
+    <div id="chapters"></div>
+  </div>
+
+  <div id="tab-dia" class="tab-section">
+    <div class="daily-section">
+      <div class="daily-title">Checklist do Ruflos hoje</div>
+      <div class="daily-sub">Joás e Laiza tocam para marcar. A lista reinicia a cada dia.</div>
+      <div class="daily-list" id="daily-list"></div>
+      <div class="daily-progress">
+        <div class="daily-prog-track"><div class="daily-prog-fill" id="daily-fill" style="width:0%"></div></div>
+        <div class="daily-prog-label" id="daily-label">0%</div>
+      </div>
+      <button class="daily-reset" onclick="resetDaily()">Reiniciar checklist do Ruflos</button>
+    </div>
+    <div class="alert-box"><span class="icon">🏆</span><div>Para Ruflos, consistência bate intensidade. Joás e Laiza fazendo pouco todos os dias vencem treinos longos e raros.</div></div>
+    <div class="section-label">Nunca entra na rotina do Ruflos</div>
+    <div class="danger-list">
+      <div class="danger-item"><span>❌</span><span>Joás e Laiza não provocam Ruflos para “ficar bravo”.</span></div>
+      <div class="danger-item"><span>❌</span><span>Ruflos não brinca de perseguir corpo, roupa ou mão.</span></div>
+      <div class="danger-item"><span>❌</span><span>Joás e Laiza não batem, enforcam, dão tranco ou assustam Ruflos.</span></div>
+      <div class="danger-item"><span>❌</span><span>Ruflos não fica solto na rua “para testar obediência”.</span></div>
+      <div class="danger-item"><span>❌</span><span>Ruflos não vence pela força; Ruflos ganha por cooperar.</span></div>
+      <div class="danger-item"><span>❌</span><span>Joás e Laiza não reforçam agitação com carinho ou porta aberta.</span></div>
+    </div>
+  </div>
+
+  <div id="tab-alerta" class="tab-section">
+    <div class="alert-box" style="background:var(--soft-red);border-color:var(--red);">
+      <span class="icon">🚨</span>
+      <div><strong>Atenção:</strong> se qualquer sinal abaixo aparecer, Joás e Laiza procuram veterinário comportamentalista ou profissional de comportamento baseado em evidências. O casal não tenta resolver por força.</div>
+    </div>
+    <div class="section-label">Sinais vermelhos em Ruflos</div>
+    <div class="sinais-grid">
+      <div class="sinal-item"><span>😤</span><span>Ruflos rosna para Joás ou Laiza.</span></div>
+      <div class="sinal-item"><span>🦴</span><span>Ruflos protege comida, osso, sofá, cama ou brinquedo.</span></div>
+      <div class="sinal-item"><span>🚪</span><span>Ruflos avança em visitas.</span></div>
+      <div class="sinal-item"><span>🐕</span><span>Ruflos investe contra outros cães na rua.</span></div>
+      <div class="sinal-item"><span>🦷</span><span>Ruflos morde e não solta.</span></div>
+      <div class="sinal-item"><span>🚴</span><span>Ruflos persegue criança, bicicleta ou moto.</span></div>
+      <div class="sinal-item"><span>👁️</span><span>Ruflos fica rígido encarando.</span></div>
+      <div class="sinal-item"><span>📢</span><span>Ruflos late descontrolado na guia e não consegue recuperar.</span></div>
+    </div>
+    <div class="section-label">Sinais amarelos antes da explosão</div>
+    <ul class="tip-list">
+      <li class="tip-item"><span class="bullet bul-amber">👀</span><span>Olho de baleia: parte branca do olho do Ruflos aparecendo.</span></li>
+      <li class="tip-item"><span class="bullet bul-amber">💨</span><span>Bocejo fora de contexto: pode ser sinal de estresse.</span></li>
+      <li class="tip-item"><span class="bullet bul-amber">👅</span><span>Ruflos lambe o focinho repetidamente.</span></li>
+      <li class="tip-item"><span class="bullet bul-amber">↩</span><span>Ruflos vira cabeça ou corpo para longe.</span></li>
+      <li class="tip-item"><span class="bullet bul-amber">⬇</span><span>Ruflos abaixa postura ou encolhe cauda.</span></li>
+      <li class="tip-item"><span class="bullet bul-amber">😤</span><span>Ruflos rosna baixo. Joás e Laiza escutam o aviso, reduzem pressão e não punem o rosnado.</span></li>
+    </ul>
+    <div class="pro-note" style="margin-top:20px;margin-bottom:28px;">
+      <span class="pro-icon">🐾</span>
+      <div class="pro-text"><strong>Lembrete do casal:</strong> Ruflos não nasce pronto nem “estragado”. Ruflos é moldado por genética, saúde, socialização, manejo, rotina, descanso e experiências. Joás e Laiza controlam muita coisa todos os dias.</div>
+    </div>
+  </div>
+</main>
+
+<button class="back-top" id="back-top" onclick="scrollToTop()" aria-label="Voltar ao topo">↑</button>
+
+<script>
+let phases = JSON.parse(localStorage.getItem('pb-phases') || '[]') || new Array(8).fill(false);
+if (!Array.isArray(phases) || phases.length !== 8) phases = new Array(8).fill(false);
+let dailyChecked = JSON.parse(localStorage.getItem('pb-daily') || '[]') || new Array(10).fill(false);
+let dailyDate = localStorage.getItem('pb-daily-date') || '';
+let favorites = JSON.parse(localStorage.getItem('pb-favorites') || '[]') || [];
+let favOnly = false;
+
+const today = new Date().toDateString();
+if (dailyDate !== today) {
+  dailyChecked = new Array(10).fill(false);
+  localStorage.setItem('pb-daily', JSON.stringify(dailyChecked));
+  localStorage.setItem('pb-daily-date', today);
+}
+
+const dailyItems = [
+  { emoji: '🌅', text: 'Joás ou Laiza fez passeio matinal do Ruflos com guia e cheiros permitidos.' },
+  { emoji: '🎓', text: 'Ruflos treinou comandos por 5 a 10 minutos com reforço positivo.' },
+  { emoji: '👁️', text: 'Ruflos praticou “viu estímulo, olhou para Joás ou Laiza”.' },
+  { emoji: '🍽️', text: 'Ruflos esperou sentado antes da refeição.' },
+  { emoji: '🦴', text: 'Ruflos teve mastigação segura ou brinquedo recheável.' },
+  { emoji: '🧠', text: 'Ruflos resolveu exercício mental: farejar, caixa, busca ou discriminação.' },
+  { emoji: '🚪', text: 'Ruflos praticou porta/portão sem disparar.' },
+  { emoji: '🌙', text: 'Ruflos fez passeio leve ou brincadeira controlada à noite.' },
+  { emoji: '😴', text: 'Ruflos teve descanso sem perturbação.' },
+  { emoji: '❤️', text: 'Joás e Laiza passaram o dia sem grito, pancada, tranco ou provocação.' }
+];
+
+const dogSvg = (state) => {
+  const tails = { relaxado: 'M70 38 C82 28,88 32,90 38', alerta: 'M70 34 L92 22', inseguro: 'M70 42 C80 52,86 54,90 48', defensivo: 'M70 34 C82 24,92 24,98 30', ataque: 'M70 31 L98 25' };
+  const ears = { relaxado: 'M28 25 L35 12 L40 28', alerta: 'M28 24 L31 8 L38 26', inseguro: 'M28 28 L20 18 L38 27', defensivo: 'M28 22 L24 8 L39 24', ataque: 'M28 21 L26 6 L40 22' };
+  const mouth = state === 'ataque' ? '<path d="M25 43 L39 43" stroke="#C0392B" stroke-width="3"/>' : '<path d="M26 42 Q31 46 36 42" stroke="#2C2C2C" stroke-width="2" fill="none"/>';
+  return `<svg viewBox="0 0 110 74" role="img" aria-label="Ruflos ${state}">
+    <ellipse cx="57" cy="42" rx="28" ry="16" fill="#E67E22" opacity="0.9"/>
+    <circle cx="30" cy="34" r="15" fill="#E67E22"/>
+    <path d="${ears[state]}" fill="#C0392B"/>
+    <path d="${tails[state]}" stroke="#C0392B" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <circle cx="25" cy="32" r="2" fill="#2C2C2C"/>
+    ${mouth}
+    <path d="M45 55 L40 70 M67 55 L72 70" stroke="#2C2C2C" stroke-width="4" stroke-linecap="round"/>
+  </svg>`;
+};
+
+const chapters = [
+  {
+    id: 'semanal',
+    icon: '📅',
+    title: 'Cronograma semanal dos primeiros meses do Ruflos',
+    html: `
+      <p>Joás e Laiza usam este roteiro como trilho, não como prisão. Se Ruflos demonstra medo, o casal reduz dificuldade e volta para uma etapa mais fácil.</p>
+      <div class="timeline">
+        <div class="timeline-item"><div class="timeline-time">8ª semana</div><div class="timeline-copy">Casa previsível, nome do Ruflos, rotina de sono, toque nas patas, guia dentro de casa, “senta” antes da comida.</div></div>
+        <div class="timeline-item"><div class="timeline-time">9ª semana</div><div class="timeline-copy">Sons baixos, pessoas calmas, caixa de transporte, mordedor correto e trocas com “solta”.</div></div>
+        <div class="timeline-item"><div class="timeline-time">10ª semana</div><div class="timeline-copy">Ruflos observa rua no colo ou em local seguro, com petiscos para calma. Joás e Laiza evitam contato com ambiente de risco antes do protocolo vacinal recomendado pelo veterinário.</div></div>
+        <div class="timeline-item"><div class="timeline-time">11ª-12ª</div><div class="timeline-copy">Encontros curtos com outros cães calmos e vacinados, manipulação veterinária e treinos de chamada.</div></div>
+        <div class="timeline-item"><div class="timeline-time">13ª-16ª</div><div class="timeline-copy">Passeios curtos, treino de olhar para Joás e Laiza, regras de visita, início da focinheira tipo cesto com petisco.</div></div>
+        <div class="timeline-item"><div class="timeline-time">17ª-24ª</div><div class="timeline-copy">Ambientes urbanos variados, “deixa” com comida no chão, guia frouxa, descanso obrigatório depois de estímulo intenso.</div></div>
+      </div>
+      <div class="source"><strong>Fontes:</strong> AVSAB Puppy Socialization; AAHA Canine Life Stage Guidelines; orientação individual do veterinário do Ruflos sobre vacinação e exposição.</div>`
+  },
+  {
+    id: 'idade',
+    icon: '🗓️',
+    title: 'Dos 2 aos 24 meses: metas por idade para Ruflos',
+    html: `
+      <div class="mini-grid">
+        <div class="mini-card"><div class="mini-title">2-3 meses</div><div class="mini-copy">Vínculo, nome, rotina, manipulação, socialização segura e mordedores.</div></div>
+        <div class="mini-card"><div class="mini-title">4 meses</div><div class="mini-copy">Passeio curto, guia frouxa, chamada feliz, “solta” e calma antes da comida.</div></div>
+        <div class="mini-card"><div class="mini-title">5-6 meses</div><div class="mini-copy">Regras de visita, treino urbano leve, focinheira tipo cesto e encontros controlados.</div></div>
+        <div class="mini-card"><div class="mini-title">7-9 meses</div><div class="mini-copy">Ruflos entra na transição para adolescência; Joás e Laiza reduzem expectativa e aumentam consistência.</div></div>
+        <div class="mini-card"><div class="mini-title">10-12 meses</div><div class="mini-copy">Treinos em locais mais difíceis, sempre abaixo do limite de reação.</div></div>
+        <div class="mini-card"><div class="mini-title">13-18 meses</div><div class="mini-copy">Maturidade física aumenta; manejo de guia, descanso e encontros seletivos ficam mais importantes.</div></div>
+        <div class="mini-card"><div class="mini-title">19-24 meses</div><div class="mini-copy">Rotina adulta: previsibilidade, enriquecimento, saúde preventiva e manutenção dos comandos.</div></div>
+      </div>
+      <div class="source"><strong>Fontes:</strong> AAHA Canine Life Stage Guidelines; AVSAB Humane Dog Training.</div>`
+  },
+  {
+    id: 'linguagem',
+    icon: '👁️',
+    title: 'Linguagem corporal do Ruflos',
+    html: `
+      <p>Joás e Laiza leem o corpo do Ruflos antes de decidir o próximo passo. O objetivo é tirar Ruflos da situação ainda nos sinais sutis.</p>
+      <div class="body-svg-grid">
+        <div class="body-state">${dogSvg('relaxado')}Relaxado<br><small>corpo solto, boca macia</small></div>
+        <div class="body-state">${dogSvg('alerta')}Alerta<br><small>olhar focado, orelhas atentas</small></div>
+        <div class="body-state">${dogSvg('inseguro')}Inseguro<br><small>corpo baixo, fuga</small></div>
+        <div class="body-state">${dogSvg('defensivo')}Defensivo<br><small>rigidez, rosnado</small></div>
+        <div class="body-state">${dogSvg('ataque')}Pré-ataque<br><small>travado, avanço</small></div>
+      </div>
+      <ul class="tip-list">
+        <li class="tip-item"><span class="bullet bul-green">1</span><span>Ruflos relaxado aceita petisco, explora e volta atenção para Joás ou Laiza.</span></li>
+        <li class="tip-item"><span class="bullet bul-amber">2</span><span>Ruflos alerta precisa de distância, movimento lento e recompensa por olhar para o casal.</span></li>
+        <li class="tip-item"><span class="bullet bul-red">3</span><span>Ruflos rígido, encarando ou rosnando precisa sair da pressão imediatamente.</span></li>
+      </ul>
+      <div class="source"><strong>Fontes:</strong> AVMA Dog Bite Prevention; Sophia Yin, linguagem corporal e sinais de estresse.</div>`
+  },
+  {
+    id: 'escalada',
+    icon: '⚠️',
+    title: 'Escalada da agressividade: do olhar fixo à mordida',
+    html: `
+      <p>Joás e Laiza tratam os primeiros sinais como informação. Punir o aviso pode deixar Ruflos mais silencioso antes de morder.</p>
+      <div class="flow">
+        <div class="flow-step risk-low"><strong>1</strong><span>Ruflos fixa olhar, fecha boca, para de farejar.</span></div>
+        <div class="flow-step risk-low"><strong>2</strong><span>Ruflos endurece corpo, desloca peso para frente ou para trás.</span></div>
+        <div class="flow-step risk-mid"><strong>3</strong><span>Ruflos lambe focinho, boceja, vira cabeça ou tenta sair.</span></div>
+        <div class="flow-step risk-mid"><strong>4</strong><span>Ruflos rosna, mostra dentes ou dá latido grave.</span></div>
+        <div class="flow-step risk-high"><strong>5</strong><span>Ruflos avança, belisca, morde e solta.</span></div>
+        <div class="flow-step risk-high"><strong>6</strong><span>Ruflos morde e sustenta. Joás e Laiza buscam ajuda profissional e veterinária.</span></div>
+      </div>
+      <div class="source"><strong>Fontes:</strong> AVMA Dog Bite Prevention; AVSAB Humane Dog Training; Merck Veterinary Manual, comportamento agressivo.</div>`
+  },
+  {
+    id: 'erros',
+    icon: '🚫',
+    title: 'Maiores erros que deixam Ruflos perigoso',
+    html: `
+      <div class="danger-list">
+        <div class="danger-item"><span>❌</span><span>Prender Ruflos isolado no quintal: solidão, frustração e falta de aprendizagem social.</span></div>
+        <div class="danger-item"><span>❌</span><span>Corrente como rotina: limita fuga, aumenta frustração e piora reatividade.</span></div>
+        <div class="danger-item"><span>❌</span><span>Incentivar guarda, “pega”, desconfiança ou avanço.</span></div>
+        <div class="danger-item"><span>❌</span><span>Cabo de guerra sem regras de início, pausa e “solta”.</span></div>
+        <div class="danger-item"><span>❌</span><span>Deixar Ruflos “ganhar” usando força corporal contra Joás ou Laiza.</span></div>
+        <div class="danger-item"><span>❌</span><span>Apresentar Ruflos a outros animais de frente, perto demais e sem rota de saída.</span></div>
+        <div class="danger-item"><span>❌</span><span>Trocar passeio, sono e enriquecimento por bronca.</span></div>
+      </div>
+      <div class="source"><strong>Fontes:</strong> AVSAB Humane Dog Training; AVMA Dog Bite Prevention; Patricia McConnell, manejo e prevenção.</div>`
+  },
+  {
+    id: 'recursos',
+    icon: '🦴',
+    title: 'Proteção de recursos: comida, osso, sofá, cama e brinquedos',
+    html: `
+      <p>Ruflos precisa aprender que a aproximação de Joás e Laiza melhora a situação. O casal não testa Ruflos tirando comida “para ver se aceita”.</p>
+      <div class="section-label" style="font-size:10px;margin:14px 0 8px;">Prevenção</div>
+      <div class="focinheira-steps">
+        <div class="fstep">Joás passa perto da comida do Ruflos e joga petisco melhor, sem tocar no pote.</div>
+        <div class="fstep">Laiza treina trocas: objeto simples por petisco ótimo, depois devolve o objeto quando for seguro.</div>
+        <div class="fstep">Ruflos ganha local calmo para comer e mastigar, sem criança e sem disputa.</div>
+        <div class="fstep">Sofá e cama têm convite e saída tranquila, nunca confronto físico.</div>
+      </div>
+      <div class="section-label" style="font-size:10px;margin:14px 0 8px;">Se já estiver acontecendo</div>
+      <ul class="tip-list">
+        <li class="tip-item"><span class="bullet bul-red">!</span><span>Joás e Laiza param de tirar itens à força imediatamente.</span></li>
+        <li class="tip-item"><span class="bullet bul-red">!</span><span>O casal usa barreiras, rotinas previsíveis e troca por item melhor.</span></li>
+        <li class="tip-item"><span class="bullet bul-red">!</span><span>Se Ruflos rosna, avança ou morde por recurso, Joás e Laiza chamam profissional.</span></li>
+      </ul>
+      <div class="source"><strong>Fontes:</strong> Jean Donaldson, Mine!; AVSAB Humane Dog Training; VCA Hospitals sobre resource guarding.</div>`
+  },
+  {
+    id: 'adolescencia',
+    icon: '🌪️',
+    title: 'Adolescência do Ruflos: 8 a 18 meses',
+    html: `
+      <p>Nessa fase, Ruflos pode parecer ter “esquecido” comandos. Joás e Laiza não encaram isso como teimosia moral. O casal reduz dificuldade, aumenta pagamento e mantém rotina.</p>
+      <ul class="tip-list">
+        <li class="tip-item"><span class="bullet bul-amber">✓</span><span>Esperado: mais distração, mais energia, teste de distância, medo novo e seletividade social.</span></li>
+        <li class="tip-item"><span class="bullet bul-red">!</span><span>Alerta: Ruflos não recupera depois de reagir, morde sustentado, protege recursos ou avança em Joás e Laiza.</span></li>
+        <li class="tip-item"><span class="bullet bul-green">✓</span><span>Resposta do casal: mais guia longa segura, menos “solto”, treino fácil em ambiente difícil e descanso obrigatório.</span></li>
+      </ul>
+      <div class="source"><strong>Fontes:</strong> AAHA Canine Life Stage Guidelines; literatura veterinária de desenvolvimento comportamental; AVSAB Humane Dog Training.</div>`
+  },
+  {
+    id: 'presa',
+    icon: '⚡',
+    title: 'Instinto de presa do Ruflos não é a mesma coisa que agressividade',
+    html: `
+      <p>Ruflos pode perseguir gato, galinha, roedor, bicicleta ou objeto em movimento por instinto de presa, mesmo sendo sociável com pessoas. Joás e Laiza tratam perseguição como comportamento predatório, não como “ódio”.</p>
+      <ul class="tip-list">
+        <li class="tip-item"><span class="bullet bul-blue">1</span><span>Predatório costuma ter foco silencioso, perseguição e captura.</span></li>
+        <li class="tip-item"><span class="bullet bul-amber">2</span><span>Agressividade defensiva costuma ter sinais de distância: rosnado, rigidez, ameaça e tentativa de afastar.</span></li>
+        <li class="tip-item"><span class="bullet bul-green">3</span><span>Joás e Laiza usam guia, focinheira tipo cesto quando necessário, distância e treino de chamada; não confiam apenas em “Ruflos é bonzinho”.</span></li>
+      </ul>
+      <div class="source"><strong>Fontes:</strong> Merck Veterinary Manual, comportamento predatório e agressão; BSAVA Manual of Canine and Feline Behavioural Medicine.</div>`
+  },
+  {
+    id: 'enriquecimento',
+    icon: '🧩',
+    title: 'Enriquecimento ambiental para Ruflos',
+    html: `
+      <div class="mini-grid">
+        <div class="mini-card"><div class="mini-title">Farejar</div><div class="mini-copy">Tapete olfativo, ração espalhada em toalha e busca de petiscos pela casa.</div></div>
+        <div class="mini-card"><div class="mini-title">Rechear</div><div class="mini-copy">Kong ou brinquedo recheável com supervisão e dificuldade gradual.</div></div>
+        <div class="mini-card"><div class="mini-title">Caixas</div><div class="mini-copy">Ruflos encontra petiscos em caixas abertas, sem susto e sem prender Ruflos.</div></div>
+        <div class="mini-card"><div class="mini-title">Objetos</div><div class="mini-copy">Joás ensina “pega bola”, Laiza ensina “pega corda”, sempre com reforço.</div></div>
+        <div class="mini-card"><div class="mini-title">Novos comandos</div><div class="mini-copy">Alvo de mão, gira, sobe/desce e relaxa no tapete.</div></div>
+        <div class="mini-card"><div class="mini-title">Mastigar</div><div class="mini-copy">Itens seguros e compatíveis com a força do Ruflos, retirados se quebrarem.</div></div>
+      </div>
+      <div class="source"><strong>Fontes:</strong> AAHA Canine Life Stage Guidelines; literatura de bem-estar e enriquecimento.</div>`
+  },
+  {
+    id: 'passeio',
+    icon: '🚶',
+    title: 'Passeio urbano do Ruflos',
+    html: `
+      <div class="focinheira-steps">
+        <div class="fstep">Saída de casa: Ruflos senta, Joás abre a porta, Ruflos só passa com liberação.</div>
+        <div class="fstep">Cruzou pessoa: Laiza cria distância, marca olhar calmo e recompensa.</div>
+        <div class="fstep">Cruzou outro animal: Joás faz arco amplo, evita frente a frente e não prende guia curta tensionada.</div>
+        <div class="fstep">Elevador: Ruflos entra por último, fica ao lado de Joás ou Laiza e recebe petisco por calma.</div>
+        <div class="fstep">Bicicleta, moto ou corrida: Joás e Laiza aumentam distância antes de Ruflos travar.</div>
+      </div>
+      <div class="source"><strong>Fontes:</strong> AVSAB Humane Dog Training; Patricia McConnell sobre manejo de reatividade na guia.</div>`
+  },
+  {
+    id: 'emergencia',
+    icon: '🚨',
+    title: 'Emergências com Ruflos',
+    html: `
+      <ul class="tip-list">
+        <li class="tip-item"><span class="bullet bul-red">F</span><span><strong>Fuga:</strong> Joás e Laiza não correm atrás gritando. O casal chama feliz, abaixa postura, usa comida e bloqueia rotas com calma.</span></li>
+        <li class="tip-item"><span class="bullet bul-red">B</span><span><strong>Briga:</strong> o casal não coloca mão perto das bocas. Se for seguro, usa barreira, água, ruído distante ou técnica orientada por profissional; depois separa e procura veterinário.</span></li>
+        <li class="tip-item"><span class="bullet bul-red">M</span><span><strong>Mordida em pessoa:</strong> Joás e Laiza prendem Ruflos com segurança, lavam o ferimento da pessoa, procuram atendimento médico e registram detalhes.</span></li>
+        <li class="tip-item"><span class="bullet bul-red">P</span><span><strong>Pós-evento:</strong> Ruflos não “treina no mesmo dia” para resolver. Ruflos descansa, passa por avaliação e o plano muda.</span></li>
+      </ul>
+      <div class="source"><strong>Fontes:</strong> AVMA Dog Bite Prevention; recomendações veterinárias de emergência e prevenção de mordidas.</div>`
+  },
+  {
+    id: 'primeiros-socorros',
+    icon: '🏥',
+    title: 'Primeiros socorros básicos do Ruflos',
+    html: `
+      <p>Primeiros socorros compram tempo. Eles não substituem veterinário.</p>
+      <div class="mini-grid">
+        <div class="mini-card"><div class="mini-title">Intoxicação</div><div class="mini-copy">Joás e Laiza não induzem vômito sem orientação. O casal leva embalagem e liga para veterinário.</div></div>
+        <div class="mini-card"><div class="mini-title">Insolação</div><div class="mini-copy">Ruflos vai para sombra, água fresca e resfriamento gradual; emergência veterinária.</div></div>
+        <div class="mini-card"><div class="mini-title">Corte</div><div class="mini-copy">Pressão com pano limpo e avaliação, principalmente se sangramento não para.</div></div>
+        <div class="mini-card"><div class="mini-title">Queimadura</div><div class="mini-copy">Água corrente fresca, sem pomada caseira, e veterinário.</div></div>
+        <div class="mini-card"><div class="mini-title">Torção</div><div class="mini-copy">Repouso, impedir corrida e avaliar dor ou apoio alterado.</div></div>
+        <div class="mini-card"><div class="mini-title">Choque</div><div class="mini-copy">Gengiva pálida, fraqueza ou colapso exigem emergência.</div></div>
+        <div class="mini-card"><div class="mini-title">Convulsão</div><div class="mini-copy">Joás e Laiza afastam objetos, não colocam mão na boca do Ruflos e cronometram.</div></div>
+        <div class="mini-card"><div class="mini-title">Engasgo</div><div class="mini-copy">Se Ruflos não respira, emergência imediata; remover objeto visível apenas se for seguro.</div></div>
+      </div>
+      <div class="source"><strong>Fontes:</strong> AVMA pet first aid; Merck Veterinary Manual, emergências.</div>`
+  },
+  {
+    id: 'saude',
+    icon: '💊',
+    title: 'Saúde preventiva do Ruflos',
+    html: `
+      <ul class="tip-list">
+        <li class="tip-item"><span class="bullet bul-blue">💉</span><span>Vacinas e vermífugo seguem calendário do veterinário do Ruflos; socialização segura é ajustada ao risco local.</span></li>
+        <li class="tip-item"><span class="bullet bul-blue">⚖</span><span>Peso controlado protege articulações e reduz sobrecarga.</span></li>
+        <li class="tip-item"><span class="bullet bul-blue">✂</span><span>Castração pode ajudar em alguns contextos, mas não resolve reatividade, medo ou falta de treino sozinha.</span></li>
+        <li class="tip-item"><span class="bullet bul-blue">🦴</span><span>Joás e Laiza monitoram claudicação, dor de quadril, joelho e suspeita de ruptura de ligamento cruzado.</span></li>
+        <li class="tip-item"><span class="bullet bul-blue">👂</span><span>Alergias e otites podem deixar Ruflos irritável; coceira e cheiro no ouvido pedem consulta.</span></li>
+        <li class="tip-item"><span class="bullet bul-blue">🍽</span><span>Alimentação é definida com veterinário, sem excesso de petiscos que desequilibrem dieta.</span></li>
+      </ul>
+      <div class="source"><strong>Fontes:</strong> AAHA Canine Vaccination Guidelines; AAHA Canine Life Stage Guidelines; AVMA recursos para famílias.</div>`
+  },
+  {
+    id: 'equipamentos',
+    icon: '🎒',
+    title: 'Equipamentos do Ruflos',
+    html: `
+      <div class="mini-grid">
+        <div class="mini-card"><div class="mini-title">Coleira</div><div class="mini-copy">Identificação sempre. Joás e Laiza não usam enforcador como ferramenta de treino.</div></div>
+        <div class="mini-card"><div class="mini-title">Peitoral</div><div class="mini-copy">Modelo seguro e bem ajustado para passeio e controle sem pressão no pescoço.</div></div>
+        <div class="mini-card"><div class="mini-title">Guia fixa</div><div class="mini-copy">Principal ferramenta urbana de Joás e Laiza.</div></div>
+        <div class="mini-card"><div class="mini-title">Guia longa</div><div class="mini-copy">Treino de chamada em local seguro; não é para calçada movimentada.</div></div>
+        <div class="mini-card"><div class="mini-title">Retrátil</div><div class="mini-copy">Evitar em rua, perto de outros animais, bicicleta e trânsito.</div></div>
+        <div class="mini-card"><div class="mini-title">Cesto</div><div class="mini-copy">Focinheira tipo cesto, condicionada com petisco.</div></div>
+        <div class="mini-card"><div class="mini-title">Caixa</div><div class="mini-copy">Transporte e descanso, nunca prisão por castigo.</div></div>
+        <div class="mini-card"><div class="mini-title">Brinquedos</div><div class="mini-copy">Resistentes, supervisionados e removidos quando danificados.</div></div>
+      </div>
+      <div class="source"><strong>Fontes:</strong> AVSAB Humane Dog Training; recomendações veterinárias de segurança no manejo.</div>`
+  },
+  {
+    id: 'mitos',
+    icon: '🧠',
+    title: 'Mitos e verdades sobre Ruflos e Pit Bulls',
+    html: `
+      <div class="tip-list">
+        <div class="tip-item"><span class="bullet bul-red">M</span><span><strong>“Trava de mandíbula”.</strong> Mito. A preocupação real é força, persistência e dano potencial, não mecanismo mágico.</span></div>
+        <div class="tip-item"><span class="bullet bul-red">M</span><span><strong>“Nasce agressivo”.</strong> Mito simplista. Genética importa, mas socialização, saúde, manejo e treino moldam risco.</span></div>
+        <div class="tip-item"><span class="bullet bul-red">M</span><span><strong>“Precisa apanhar para respeitar”.</strong> Falso e perigoso. Punição física aumenta medo, estresse e agressividade.</span></div>
+        <div class="tip-item"><span class="bullet bul-amber">V</span><span><strong>“Castração resolve tudo”.</strong> Falso. Pode ajudar em alguns comportamentos hormonais, mas não substitui manejo e treino.</span></div>
+        <div class="tip-item"><span class="bullet bul-green">V</span><span><strong>“Cabo de guerra causa agressividade”.</strong> Falso quando Joás e Laiza colocam regras de início, pausa e “solta”.</span></div>
+      </div>
+      <div class="source"><strong>Fontes:</strong> AVSAB Humane Dog Training; AVMA Dog Bite Prevention; literatura de comportamento veterinário.</div>`
+  },
+  {
+    id: 'troubleshooting',
+    icon: '🔧',
+    title: 'Ruflos faz X: o que Joás e Laiza fazem?',
+    html: `
+      <div class="flow">
+        <div class="flow-step risk-mid"><strong>Late para visita</strong><span>Joás e Laiza aumentam distância, usam guia, recompensam olhar calmo e só aproximam visita quando Ruflos relaxa.</span></div>
+        <div class="flow-step risk-low"><strong>Puxa guia</strong><span>O casal para. Guia afrouxou, o passeio continua. Joás e Laiza recompensam Ruflos ao lado.</span></div>
+        <div class="flow-step risk-high"><strong>Rosna para comida</strong><span>Joás e Laiza param de tocar no pote, fazem protocolo de aproximação com petisco melhor e buscam ajuda.</span></div>
+        <div class="flow-step risk-mid"><strong>Morde mão</strong><span>O casal pausa brincadeira, oferece mordedor e recompensa escolha correta.</span></div>
+        <div class="flow-step risk-mid"><strong>Persegue moto</strong><span>Joás e Laiza aumentam distância antes do foco fixo e treinam “olha” com petisco alto valor.</span></div>
+        <div class="flow-step risk-low"><strong>Não vem quando chama</strong><span>Joás e Laiza pagam melhor, treinam com guia longa e nunca usam chamada para encerrar diversão com bronca.</span></div>
+      </div>
+      <div class="source"><strong>Fontes:</strong> AVSAB Humane Dog Training; Patricia McConnell; Jean Donaldson.</div>`
+  },
+  {
+    id: 'linha-tempo',
+    icon: '✅',
+    title: 'Evolução esperada do Ruflos: hoje até adulto',
+    html: `
+      <div class="timeline">
+        <div class="timeline-item"><div class="timeline-time">Hoje</div><div class="timeline-copy">Joás e Laiza definem rotina, equipamentos, veterinário, regras de casa e checklist diário.</div></div>
+        <div class="timeline-item"><div class="timeline-time">1 mês</div><div class="timeline-copy">Ruflos responde ao nome, aceita manipulação, troca objetos e faz passeios curtos com mais calma.</div></div>
+        <div class="timeline-item"><div class="timeline-time">3 meses</div><div class="timeline-copy">Ruflos olha para Joás e Laiza diante de estímulos leves, aceita focinheira em treino e reduz mordida em mãos.</div></div>
+        <div class="timeline-item"><div class="timeline-time">6 meses</div><div class="timeline-copy">Ruflos tem rotina urbana previsível, sabe “solta”, “deixa”, “vem” e recupera depois de sustos.</div></div>
+        <div class="timeline-item"><div class="timeline-time">12 meses</div><div class="timeline-copy">Ruflos atravessa adolescência com manejo firme, sem punição física e sem liberdade arriscada.</div></div>
+        <div class="timeline-item"><div class="timeline-time">Adulto</div><div class="timeline-copy">Ruflos é forte, previsível, manejado com respeito e seguro porque Joás e Laiza mantêm o básico todos os dias.</div></div>
+      </div>
+      <div class="source"><strong>Fontes:</strong> AAHA Canine Life Stage Guidelines; AVSAB Puppy Socialization; AVSAB Humane Dog Training.</div>`
+  },
+  {
+    id: 'referencias',
+    icon: '📚',
+    title: 'Referências verificáveis usadas no guia',
+    html: `
+      <div class="ref-list">
+        <div><strong>AVSAB.</strong> Position Statements: Humane Dog Training; Puppy Socialization. <a href="https://avsab.org/resources/position-statements/" target="_blank" rel="noopener">avsab.org/resources/position-statements</a></div>
+        <div><strong>AVMA.</strong> Dog Bite Prevention e recursos para famílias. <a href="https://www.avma.org/resources-tools/pet-owners/dog-bite-prevention" target="_blank" rel="noopener">avma.org/resources-tools/pet-owners/dog-bite-prevention</a></div>
+        <div><strong>AAHA.</strong> Canine Life Stage Guidelines e Canine Vaccination Guidelines. <a href="https://www.aaha.org/resources/" target="_blank" rel="noopener">aaha.org/resources</a></div>
+        <div><strong>Merck Veterinary Manual.</strong> Emergências, comportamento e saúde. <a href="https://www.merckvetmanual.com/dog-owners" target="_blank" rel="noopener">merckvetmanual.com/dog-owners</a></div>
+        <div><strong>BSAVA.</strong> Manual of Canine and Feline Behavioural Medicine, referência de medicina comportamental.</div>
+        <div><strong>Patricia McConnell.</strong> The Other End of the Leash e materiais de manejo comportamental.</div>
+        <div><strong>Sophia Yin.</strong> Low Stress Handling e linguagem corporal.</div>
+        <div><strong>Karen Pryor.</strong> Don't Shoot the Dog, reforço positivo e marcação de comportamento.</div>
+        <div><strong>Jean Donaldson.</strong> Mine! e The Culture Clash, prevenção de proteção de recursos e treino moderno.</div>
+      </div>`
+  }
+];
+
+function chapterTemplate(chapter, index) {
+  const active = favorites.includes(chapter.id) ? 'active' : '';
+  return `
+    <article class="chapter-card search-item" id="chapter-${chapter.id}" data-id="${chapter.id}">
+      <div class="chapter-header" onclick="toggleChapter('${chapter.id}')">
+        <div class="chapter-icon c-amber">${chapter.icon}</div>
+        <div class="chapter-info"><div class="chapter-num">Capítulo ${index + 1}</div><div class="chapter-title">${chapter.title}</div></div>
+        <button class="fav-btn ${active}" onclick="toggleFavorite(event,'${chapter.id}')" title="Favoritar capítulo" aria-label="Favoritar ${chapter.title}">★</button>
+        <span class="chevron">⌄</span>
+      </div>
+      <div class="chapter-body">${chapter.html}</div>
+    </article>`;
+}
+
+function buildChapters() {
+  document.getElementById('chapters').innerHTML = chapters.map(chapterTemplate).join('');
+}
+
+function buildNavigation() {
+  const quickItems = [
+    { label: 'Fases', target: 'card-0' },
+    { label: 'Cronogramas', target: 'chapter-semanal' },
+    { label: 'Linguagem', target: 'chapter-linguagem' },
+    { label: 'Passeio', target: 'chapter-passeio' },
+    { label: 'Emergência', target: 'chapter-emergencia' },
+    { label: 'Saúde', target: 'chapter-saude' },
+    { label: 'Mitos', target: 'chapter-mitos' },
+    { label: 'Fontes', target: 'chapter-referencias' }
+  ];
+  document.getElementById('quick-nav').innerHTML = quickItems.map(item =>
+    `<button class="quick-chip" onclick="jumpTo('${item.target}')">${item.label}</button>`
+  ).join('');
+  document.getElementById('toc-grid').innerHTML = chapters.map((chapter, index) =>
+    `<button class="toc-link" onclick="jumpTo('chapter-${chapter.id}', true)"><span>${chapter.icon}</span><span>${index + 1}. ${chapter.title}</span></button>`
+  ).join('');
+}
+
+function jumpTo(targetId, open = false) {
+  const guiaBtn = document.querySelector('.nav-tab[data-tab="guia"]');
+  if (guiaBtn) switchTab('guia', guiaBtn);
+  const search = document.getElementById('search');
+  if (search.value || favOnly) {
+    search.value = '';
+    favOnly = false;
+    document.getElementById('search-help').textContent = 'Use a busca para encontrar passeio, mordida, comida, emergência, adolescência ou fontes.';
+    applySearch();
+  }
+  const target = document.getElementById(targetId);
+  if (!target) return;
+  if (open && target.classList.contains('chapter-card')) target.classList.add('open');
+  if (target.classList.contains('phase-card')) target.classList.add('open');
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function togglePhase(i) {
+  const card = document.getElementById('card-' + i);
+  const isOpen = card.classList.contains('open');
+  document.querySelectorAll('.phase-card').forEach(c => c.classList.remove('open'));
+  if (!isOpen) card.classList.add('open');
+}
+
+function toggleChapter(id) {
+  const card = document.getElementById('chapter-' + id);
+  if (!card) return;
+  card.classList.toggle('open');
+}
+
+function markDone(i) {
+  phases[i] = !phases[i];
+  localStorage.setItem('pb-phases', JSON.stringify(phases));
+  updatePhaseUI();
+}
+
+function updatePhaseUI() {
+  const done = phases.filter(Boolean).length;
+  document.getElementById('prog-count').textContent = done + ' / 8';
+  document.getElementById('prog-fill').style.width = (done / 8 * 100) + '%';
+  document.getElementById('paw-track').innerHTML = phases.map((d, i) =>
+    `<span class="paw-dot ${d ? 'done' : ''}" title="Fase ${i+1} do Ruflos">🐾</span>`
+  ).join('');
+  phases.forEach((d, i) => {
+    const card = document.getElementById('card-' + i);
+    const btn = document.getElementById('done-' + i);
+    if (!card || !btn) return;
+    card.classList.toggle('done', d);
+    btn.classList.toggle('done', d);
+    btn.textContent = d ? 'Fase dominada por Joás e Laiza' : 'Joás e Laiza já dominam esta fase';
+  });
+}
+
+function buildDaily() {
+  if (dailyChecked.length !== dailyItems.length) dailyChecked = new Array(dailyItems.length).fill(false);
+  document.getElementById('daily-list').innerHTML = dailyItems.map((item, i) => `
+    <div class="daily-item ${dailyChecked[i] ? 'checked' : ''}" onclick="toggleDaily(${i})">
+      <div class="daily-cb">${dailyChecked[i] ? '✓' : ''}</div>
+      <span class="daily-emoji">${item.emoji}</span>
+      <span class="daily-text">${item.text}</span>
+    </div>`).join('');
+  updateDailyProgress();
+}
+
+function toggleDaily(i) {
+  dailyChecked[i] = !dailyChecked[i];
+  localStorage.setItem('pb-daily', JSON.stringify(dailyChecked));
+  buildDaily();
+}
+
+function resetDaily() {
+  dailyChecked = new Array(dailyItems.length).fill(false);
+  localStorage.setItem('pb-daily', JSON.stringify(dailyChecked));
+  buildDaily();
+}
+
+function updateDailyProgress() {
+  const done = dailyChecked.filter(Boolean).length;
+  const pct = Math.round(done / dailyItems.length * 100);
+  document.getElementById('daily-fill').style.width = pct + '%';
+  document.getElementById('daily-label').textContent = pct + '%';
+}
+
+function switchTab(tab, btn) {
+  document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(b => {
+    b.classList.remove('active');
+    b.setAttribute('aria-selected', 'false');
+  });
+  document.getElementById('tab-' + tab).classList.add('active');
+  btn.classList.add('active');
+  btn.setAttribute('aria-selected', 'true');
+}
+
+function toggleFavorite(event, id) {
+  event.stopPropagation();
+  favorites = favorites.includes(id) ? favorites.filter(f => f !== id) : [...favorites, id];
+  localStorage.setItem('pb-favorites', JSON.stringify(favorites));
+  buildChapters();
+  applySearch();
+}
+
+function showFavoritesOnly() {
+  favOnly = !favOnly;
+  document.getElementById('search-help').textContent = favOnly ? 'Mostrando favoritos de Joás e Laiza. Toque na estrela de novo para ver tudo.' : 'Use a busca para encontrar passeio, mordida, comida, emergência, adolescência ou fontes.';
+  applySearch();
+}
+
+function clearSearch() {
+  document.getElementById('search').value = '';
+  favOnly = false;
+  document.getElementById('search-help').textContent = 'Use a busca para encontrar passeio, mordida, comida, emergência, adolescência ou fontes.';
+  applySearch();
+}
+
+function applySearch() {
+  const q = document.getElementById('search').value.trim().toLowerCase();
+  let visible = 0;
+  document.querySelectorAll('.search-item').forEach(item => {
+    const id = item.dataset.id;
+    const matchesText = !q || item.textContent.toLowerCase().includes(q);
+    const matchesFav = !favOnly || (id && favorites.includes(id));
+    const shouldShow = matchesText && matchesFav;
+    item.classList.toggle('hidden-by-search', !shouldShow);
+    if (shouldShow) visible += 1;
+    if (q && shouldShow) item.classList.add('open');
+  });
+  const state = document.getElementById('search-state');
+  const empty = document.getElementById('empty-search');
+  const hasFilter = Boolean(q) || favOnly;
+  state.textContent = hasFilter ? `${visible} resultado${visible === 1 ? '' : 's'} no guia do Ruflos` : '';
+  empty.classList.toggle('show', hasFilter && visible === 0);
+}
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function updateBackTop() {
+  document.getElementById('back-top').classList.toggle('visible', window.scrollY > 420);
+}
+
+buildChapters();
+buildNavigation();
+updatePhaseUI();
+buildDaily();
+applySearch();
+window.addEventListener('scroll', updateBackTop, { passive: true });
+updateBackTop();
+</script>
+</body>
+</html>
