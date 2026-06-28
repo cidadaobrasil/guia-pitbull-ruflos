@@ -803,6 +803,45 @@
   @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   }
+
+  /* Estilo dos microvídeos/flashs contextuais do Ruflos */
+  .ruflos-flash {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 14px;
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    margin: 16px 0;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+  }
+  .ruflos-flash video {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    object-fit: cover;
+    display: block;
+    background: #111;
+  }
+  .ruflos-flash p {
+    font-size: 13.5px;
+    font-weight: 800;
+    line-height: 1.45;
+    color: var(--coal);
+    margin: 0;
+  }
+  @media (max-width: 480px) {
+    .ruflos-flash {
+      grid-template-columns: 90px 1fr;
+      gap: 10px;
+      padding: 10px;
+    }
+    .ruflos-flash p {
+      font-size: 12.5px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -865,6 +904,10 @@
       <div class="phase-body">
         <div class="phase-age">Ruflos está com 4 meses: reta final da janela mais sensível</div>
         <p>Esta fase ainda é prioridade máxima para Ruflos. Como Ruflos já está com 4 meses, Joás e Laiza devem revisar lacunas de socialização com calma e segurança: pessoas diferentes, sons urbanos, manipulação, guia, visitas, veterinário e outros cães calmos. A AVSAB descreve a socialização inicial como prioridade essencial antes que Ruflos chegue ao fim da janela primária.</p>
+        <aside class="ruflos-flash ruflos-flash--inline">
+          <video src="assets/ruflos/ruflos-calmo-flash.mp4" muted autoplay loop playsinline preload="metadata"></video>
+          <p>Ruflos em momento tranquilo: vínculo, calma e confiança também fazem parte da criação.</p>
+        </aside>
         <div class="section-label" style="font-size:10px;margin:14px 0 8px;">Todo dia, algo novo para Ruflos</div>
         <ul class="tip-list">
           <li class="tip-item"><span class="bullet bul-red">P</span><span><strong>Pessoas variadas:</strong> homem, mulher, criança, idoso, boné, capacete, guarda-chuva, uniforme e passos diferentes.</span></li>
@@ -957,6 +1000,10 @@
       <div class="phase-body">
         <div class="phase-age">Diário: consistência vence intensidade</div>
         <div class="alert-box" style="background:#F4ECF9;border-color:#8E44AD;"><span class="icon">⚡</span><div>Ruflos sem rotina fica mais impulsivo. Exercício físico ajuda, mas Ruflos também precisa de farejar, mastigar, resolver pequenos problemas e dormir bem.</div></div>
+        <aside class="ruflos-flash ruflos-flash--inline">
+          <video src="assets/ruflos/ruflos-descanso-flash.mp4" muted autoplay loop playsinline preload="metadata"></video>
+          <p>Descanso também é treino: cão equilibrado precisa gastar energia e também saber relaxar.</p>
+        </aside>
         <div class="timeline">
           <div class="timeline-item"><div class="timeline-time">Manhã</div><div class="timeline-copy"><strong>30 a 40 min:</strong> passeio com guia, cheiros permitidos e pausas de atenção em Joás ou Laiza.</div></div>
           <div class="timeline-item"><div class="timeline-time">Tarde</div><div class="timeline-copy"><strong>5 a 10 min:</strong> obediência simples, “solta”, “deixa”, chamada e calma antes de recurso.</div></div>
@@ -977,6 +1024,10 @@
       <div class="phase-body">
         <div class="phase-age">Desde o primeiro dia em casa</div>
         <p>Ruflos aprende melhor quando Joás e Laiza repetem as mesmas regras. Carinho, porta aberta, comida, sofá e brincadeira viram consequências boas para calma e cooperação.</p>
+        <aside class="ruflos-flash ruflos-flash--inline">
+          <video src="assets/ruflos/ruflos-cadeira-flash.mp4" muted autoplay loop playsinline preload="metadata"></video>
+          <p>Pequenas cenas do dia a dia ajudam a mostrar que disciplina também nasce da rotina.</p>
+        </aside>
         <ul class="tip-list">
           <li class="tip-item"><span class="bullet bul-green">✓</span><span>Ruflos cumprimenta visitas com quatro patas no chão ou sentado.</span></li>
           <li class="tip-item"><span class="bullet bul-green">✓</span><span>Ruflos espera Joás ou Laiza liberar passagem no portão.</span></li>
