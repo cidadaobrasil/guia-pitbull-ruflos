@@ -849,6 +849,29 @@
       font-size: 12.5px;
     }
   }
+
+  .hero-btn-visitas {
+    background: var(--amber);
+    border: none;
+    border-radius: 20px;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 900;
+    color: white;
+    margin: 12px auto 0;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(230, 126, 34, 0.4);
+    transition: transform 0.2s, background-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-shadow: none;
+    position: relative;
+    z-index: 10;
+  }
+  .hero-btn-visitas:active {
+    transform: scale(0.96);
+  }
 </style>
 </head>
 <body>
@@ -861,6 +884,7 @@
     <span class="badge">Sem punição física</span>
     <span class="badge">Checklist do Ruflos</span>
   </div>
+  <button class="hero-btn-visitas" onclick="jumpTo('chapter-visitas', true)">🏠 Guia de Visitas</button>
 </header>
 
 <div class="progress-bar-wrap" aria-label="Progresso das oito fases">
